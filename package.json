@@ -1,0 +1,37 @@
+{
+  "name": "morphio-web",
+  "version": "1.0.0",
+  "description": "Morphio Web - Modern Web Development for Small Businesses",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@portabletext/react": "^5.0.0",
+    "@sanity/client": "^7.13.0",
+    "@sanity/image-url": "^1.2.0",
+    "next": "^16.0.1",
+    "next-sanity": "^11.6.8",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@sanity/vision": "^4.17.0",
+    "@types/node": "^24.10.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "autoprefixer": "^10.4.22",
+    "eslint": "^9.39.1",
+    "eslint-config-next": "^16.0.1",
+    "postcss": "^8.5.6",
+    "sanity": "^4.17.0",
+    "tailwindcss": "^3.4.18",
+    "typescript": "^5.9.3"
+  }
+}
