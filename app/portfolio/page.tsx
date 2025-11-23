@@ -76,13 +76,10 @@ export default async function PortfolioPage() {
           ) : (
             <div className="text-center py-16">
               <div className="text-6xl mb-4">📁</div>
-              <h3 className="text-2xl font-bold mb-2">No projects yet</h3>
+              <h3 className="text-2xl font-bold mb-2">Coming Soon</h3>
               <p className="text-neutral-600 mb-6">
-                Projects will appear here once you add them to your Sanity Studio.
+                We're currently working on exciting new projects. Check back soon to see our latest work!
               </p>
-              <Link href="/studio" className="btn btn-primary">
-                Go to Sanity Studio
-              </Link>
             </div>
           )}
         </div>

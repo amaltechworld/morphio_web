@@ -12,7 +12,6 @@ export default function Footer() {
     ],
     Company: [
       { href: "/about", label: "About Us" },
-      { href: "/work-diary", label: "Work Diary" },
       { href: "/portfolio", label: "Portfolio" },
       { href: "/contact", label: "Contact" },
     ],

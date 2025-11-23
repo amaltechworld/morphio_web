@@ -13,7 +13,7 @@ export const servicePackages: ServicePackage[] = [
       "Google Maps integration",
       "Social media links",
       "Advanced SEO optimization",
-      "1 round of revisions",
+      "Unlimited revisions",
       "1 week post-launch support",
     ],
     idealFor: [
@@ -37,7 +37,7 @@ export const servicePackages: ServicePackage[] = [
       "Blog/News section",
       "Advanced SEO with schema markup",
       "Google Analytics integration",
-      "2 rounds of revisions",
+      "Unlimited revisions",
       "2 weeks post-launch support",
     ],
     idealFor: [
@@ -63,7 +63,7 @@ export const servicePackages: ServicePackage[] = [
       "Inventory tracking",
       "Customer accounts",
       "Email order confirmations",
-      "3 rounds of revisions",
+      "Unlimited revisions",
       "3 weeks post-launch support",
     ],
     idealFor: [
@@ -116,28 +116,28 @@ export const addOnServices = [
 
 export const maintenancePackages = [
   {
-    name: "Basic Maintenance",
-    price: 50,
-    period: "month",
+    name: "On-Demand Support",
+    price: 25,
+    period: "per request",
     features: [
       "Content updates (text, images)",
-      "Security monitoring",
-      "Backup management",
-      "Monthly performance report",
+      "Minor bug fixes & adjustments",
+      "Security monitoring & updates",
+      "Pay only when you need help",
       "Email support (48hr response)",
     ],
   },
   {
-    name: "Premium Maintenance",
-    price: 100,
-    period: "month",
+    name: "Priority Support",
+    price: 50,
+    period: "per request",
     features: [
-      "Everything in Basic",
-      "Weekly content updates",
-      "SEO monitoring & optimization",
-      "A/B testing support",
-      "Priority email support (24hr response)",
-      "Monthly strategy call",
+      "Everything in On-Demand",
+      "Major feature additions",
+      "Design & layout changes",
+      "SEO optimization updates",
+      "Priority response (24hr response)",
+      "Free consultation before work begins",
     ],
   },
 ];

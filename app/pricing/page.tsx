@@ -118,9 +118,9 @@ export default function PricingPage() {
                 </tr>
                 <tr className="border-b border-neutral-200 bg-neutral-50">
                   <td className="p-4 font-medium">Revisions</td>
-                  <td className="p-4 text-center">1 round</td>
-                  <td className="p-4 text-center bg-primary-50/30">2 rounds</td>
-                  <td className="p-4 text-center">3 rounds</td>
+                  <td className="p-4 text-center">Unlimited</td>
+                  <td className="p-4 text-center bg-primary-50/30">Unlimited</td>
+                  <td className="p-4 text-center">Unlimited</td>
                 </tr>
                 <tr className="border-b border-neutral-200">
                   <td className="p-4 font-medium">Post-Launch Support</td>
@@ -241,9 +241,9 @@ export default function PricingPage() {
       <section className="section bg-white">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="section-title">Ongoing Maintenance</h2>
+            <h2 className="section-title">Flexible Maintenance</h2>
             <p className="section-subtitle mx-auto">
-              Keep your website updated and running smoothly
+              Pay only when you need updates. No monthly fees. Much more affordable than you'd expect.
             </p>
           </div>
 
