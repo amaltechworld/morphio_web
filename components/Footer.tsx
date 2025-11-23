@@ -17,7 +17,6 @@ export default function Footer() {
     ],
     Resources: [
       { href: "/pricing", label: "Pricing" },
-      { href: "/blog", label: "Blog" },
       { href: "/faq", label: "FAQ" },
       { href: "/contact", label: "Get Quote" },
     ],

@@ -37,18 +37,24 @@ export default function ServicesPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
-            {servicePackages.map((pkg) => (
+            {servicePackages.map((pkg, index) => (
               <div
                 key={pkg.id}
                 id={pkg.id}
                 className={`card relative flex flex-col ${
                   pkg.popular ? 'border-2 border-primary-500 shadow-2xl scale-105' : ''
-                }`}
+                } ${index > 0 ? 'opacity-60' : ''}`}
               >
-                {pkg.popular && (
+                {index === 0 ? (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-primary-500 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg">
-                      ⭐ MOST POPULAR
+                    <span className="bg-secondary-500 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg">
+                      AVAILABLE NOW
+                    </span>
+                  </div>
+                ) : (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <span className="bg-neutral-400 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg">
+                      COMING SOON
                     </span>
                   </div>
                 )}
@@ -99,12 +105,21 @@ export default function ServicesPage() {
                   </div>
                 </div>
 
-                <Link
-                  href="/contact"
-                  className={`btn w-full mt-auto ${pkg.popular ? 'btn-primary' : 'btn-outline'}`}
-                >
-                  Get Started
-                </Link>
+                {index === 0 ? (
+                  <Link
+                    href="/contact"
+                    className="btn w-full mt-auto btn-primary"
+                  >
+                    Get Started
+                  </Link>
+                ) : (
+                  <button
+                    disabled
+                    className="btn w-full mt-auto bg-neutral-300 text-neutral-500 cursor-not-allowed"
+                  >
+                    Coming Soon
+                  </button>
+                )}
               </div>
             ))}
           </div>

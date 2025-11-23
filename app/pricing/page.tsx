@@ -281,15 +281,15 @@ export default function PricingPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-2">Flexible Payment Terms</h3>
+              <h3 className="text-xl font-bold mb-2">Simple Payment Process</h3>
               <p className="text-neutral-600 mb-4">
-                We offer payment plans to make professional web development accessible:
+                We work through Fiverr for secure and hassle-free payments:
               </p>
               <ul className="space-y-2 text-neutral-700">
-                <li>• 50% deposit to start</li>
-                <li>• 50% before launch</li>
-                <li>• Payment via PayPal, Stripe, or bank transfer</li>
-                <li>• Custom payment plans available on request</li>
+                <li>• All payments handled through Fiverr's secure platform</li>
+                <li>• Buyer protection included</li>
+                <li>• Clear milestone-based delivery</li>
+                <li>• Payment released only when you're satisfied</li>
               </ul>
             </div>
 
@@ -334,10 +334,6 @@ export default function PricingPage() {
               {
                 question: "What if I need changes after the project is done?",
                 answer: "All packages include post-launch support (1-3 weeks). After that, small text/image changes are often free. Larger updates can be quoted separately or you can choose a maintenance package.",
-              },
-              {
-                question: "Can I upgrade my package later?",
-                answer: "Absolutely! Start with a smaller package and add features as your business grows. We'll credit what you've already paid toward the upgrade.",
               },
               {
                 question: "Do you offer refunds?",
