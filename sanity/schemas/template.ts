@@ -48,16 +48,7 @@ export default defineType({
       name: 'category',
       title: 'Category',
       type: 'string',
-      options: {
-        list: [
-          { title: 'Restaurant', value: 'Restaurant' },
-          { title: 'Salon & Spa', value: 'Salon & Spa' },
-          { title: 'E-commerce', value: 'E-commerce' },
-          { title: 'Professional Services', value: 'Professional Services' },
-          { title: 'Portfolio', value: 'Portfolio' },
-          { title: 'Landing Page', value: 'Landing Page' },
-        ],
-      },
+      description: 'Enter category (e.g., Restaurant, Salon & Spa, E-commerce, Portfolio)',
       validation: (Rule) => Rule.required(),
     }),
     defineField({

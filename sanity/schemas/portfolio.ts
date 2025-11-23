@@ -74,15 +74,7 @@ export default defineType({
       name: 'category',
       title: 'Category',
       type: 'string',
-      options: {
-        list: [
-          { title: 'Web Design', value: 'web-design' },
-          { title: 'E-commerce', value: 'ecommerce' },
-          { title: 'Mobile App', value: 'mobile-app' },
-          { title: 'Branding', value: 'branding' },
-          { title: 'Other', value: 'other' },
-        ],
-      },
+      description: 'Enter any category (e.g., Bakery & Cafe, Salon & Barbershop, Restaurant)',
       validation: (Rule) => Rule.required(),
     }),
     defineField({

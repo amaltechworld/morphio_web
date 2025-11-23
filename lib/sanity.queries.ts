@@ -54,40 +54,6 @@ export async function getPortfolioProjectBySlug(slug: string) {
   )
 }
 
-// Service queries
-export async function getAllServices() {
-  return client.fetch(
-    `*[_type == "service"] | order(order asc) {
-      _id,
-      title,
-      slug,
-      description,
-      icon,
-      image,
-      features,
-      pricing,
-      order
-    }`
-  )
-}
-
-export async function getServiceBySlug(slug: string) {
-  return client.fetch(
-    `*[_type == "service" && slug.current == $slug][0] {
-      _id,
-      title,
-      slug,
-      description,
-      icon,
-      image,
-      features,
-      pricing,
-      content
-    }`,
-    { slug }
-  )
-}
-
 // Template queries
 export async function getAllTemplates() {
   return client.fetch(

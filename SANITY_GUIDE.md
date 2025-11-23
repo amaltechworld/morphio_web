@@ -63,13 +63,44 @@
 
 ---
 
+## Image Guidelines
+
+### Do I need to optimize images before uploading?
+
+**No!** Sanity automatically handles image optimization:
+- Automatically compresses images
+- Creates multiple sizes for different devices
+- Converts to modern formats (WebP)
+- Adds CDN delivery for fast loading
+
+Just upload your original high-quality images directly!
+
+### Recommended Image Dimensions
+
+**Portfolio Projects (Main Image):**
+- Minimum: 1200 x 800 pixels
+- Recommended: 1600 x 1067 pixels (3:2 ratio)
+- Format: JPG or PNG
+
+**Templates (Preview Image):**
+- Minimum: 1200 x 800 pixels
+- Recommended: 1600 x 1067 pixels (3:2 ratio)
+- Format: JPG or PNG
+
+**General Tips:**
+- Use landscape orientation (horizontal images)
+- Higher resolution is better - Sanity will optimize it
+- Keep file size under 5MB for faster uploads
+- Don't worry about "tiny pixel" compression - Sanity handles it
+
 ## Tips
 
 - Always click **"Publish"** to save changes (not just "Save")
 - Use **Featured** checkbox on portfolio items to show them on homepage
 - Add clear, descriptive **tags** for better organization
-- Upload high-quality images for better visual appeal
+- Upload high-quality images directly - no need to pre-compress
 - Use the **"Generate"** button for slugs (they must be unique)
+- **Category** field is now free text - type any category you want!
 
 ---
 
