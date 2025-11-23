@@ -1,12 +1,41 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { templates, templateCategories } from "@/data/templates";
+import { urlFor } from '@/lib/sanity.client';
+
+// Categories for filtering
+const templateCategories = [
+  "All Templates",
+  "Restaurant",
+  "Salon & Spa",
+  "E-commerce",
+  "Professional Services",
+  "Portfolio",
+  "Landing Page",
+];
 
 export default function TemplatesPage() {
+  const [templates, setTemplates] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState("All Templates");
+
+  useEffect(() => {
+    // Fetch templates from Sanity
+    async function fetchTemplates() {
+      try {
+        const response = await fetch('/api/templates');
+        const data = await response.json();
+        setTemplates(data);
+      } catch (error) {
+        console.error('Error fetching templates:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchTemplates();
+  }, []);
 
   const filteredTemplates = selectedCategory === "All Templates"
     ? templates
@@ -51,101 +80,124 @@ export default function TemplatesPage() {
             ))}
           </div>
 
+          {/* Loading State */}
+          {loading && (
+            <div className="text-center py-12">
+              <p className="text-xl text-neutral-600">Loading templates...</p>
+            </div>
+          )}
+
           {/* Templates Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredTemplates.map((template) => (
-              <div
-                key={template.id}
-                className="card p-0 overflow-hidden group hover:shadow-2xl transition-all duration-300"
-              >
-                {/* Template Preview Image */}
-                <div className="relative h-64 overflow-hidden">
-                  <Image
-                    src={template.previewImage}
-                    alt={template.name}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute top-4 right-4">
-                    <span className="px-3 py-1 bg-primary-500 text-white text-sm font-medium rounded-full">
-                      {template.category}
-                    </span>
-                  </div>
-                  {/* View Demo Button - appears on hover */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <Link
-                      href={template.demoUrl}
-                      target="_blank"
-                      className="btn btn-primary"
-                    >
-                      View Live Demo
-                    </Link>
-                  </div>
-                </div>
-
-                {/* Template Details */}
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold mb-2">{template.name}</h3>
-                  <p className="text-neutral-600 mb-4 line-clamp-2">
-                    {template.description}
-                  </p>
-
-                  {/* Features */}
-                  <div className="mb-4">
-                    <h4 className="text-sm font-semibold text-neutral-700 mb-2">
-                      Key Features:
-                    </h4>
-                    <ul className="space-y-1">
-                      {template.features.slice(0, 3).map((feature, index) => (
-                        <li key={index} className="flex items-start gap-2 text-sm text-neutral-600">
-                          <svg className="w-4 h-4 text-secondary-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {template.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-1 bg-neutral-100 text-neutral-600 text-xs rounded"
-                      >
-                        {tag}
+          {!loading && filteredTemplates.length > 0 && (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredTemplates.map((template) => (
+                <div
+                  key={template._id}
+                  className="card p-0 overflow-hidden group hover:shadow-2xl transition-all duration-300"
+                >
+                  {/* Template Preview Image */}
+                  <div className="relative h-64 overflow-hidden">
+                    {template.preview?.asset && (
+                      <Image
+                        src={urlFor(template.preview).width(800).height(600).url()}
+                        alt={template.name}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute top-4 right-4">
+                      <span className="px-3 py-1 bg-primary-500 text-white text-sm font-medium rounded-full">
+                        {template.category}
                       </span>
-                    ))}
+                    </div>
+                    {/* View Demo Button - appears on hover */}
+                    {template.demoUrl && (
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <Link
+                          href={template.demoUrl}
+                          target="_blank"
+                          className="btn btn-primary"
+                        >
+                          View Live Demo
+                        </Link>
+                      </div>
+                    )}
                   </div>
 
-                  {/* Action Buttons */}
-                  <div className="flex gap-3">
-                    <Link
-                      href={template.demoUrl}
-                      target="_blank"
-                      className="flex-1 btn btn-outline text-sm"
-                    >
-                      Live Demo
-                    </Link>
-                    <Link
-                      href="/contact"
-                      className="flex-1 btn btn-primary text-sm"
-                    >
-                      Get Started
-                    </Link>
+                  {/* Template Details */}
+                  <div className="p-6">
+                    <h3 className="text-2xl font-bold mb-2">{template.name}</h3>
+                    <p className="text-neutral-600 mb-4 line-clamp-2">
+                      {template.description}
+                    </p>
+
+                    {/* Features */}
+                    {template.features && template.features.length > 0 && (
+                      <div className="mb-4">
+                        <h4 className="text-sm font-semibold text-neutral-700 mb-2">
+                          Key Features:
+                        </h4>
+                        <ul className="space-y-1">
+                          {template.features.slice(0, 3).map((feature: string, index: number) => (
+                            <li key={index} className="flex items-start gap-2 text-sm text-neutral-600">
+                              <svg className="w-4 h-4 text-secondary-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                              </svg>
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {/* Tags */}
+                    {template.tags && template.tags.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {template.tags.map((tag: string) => (
+                          <span
+                            key={tag}
+                            className="px-2 py-1 bg-neutral-100 text-neutral-600 text-xs rounded"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Action Buttons */}
+                    <div className="flex gap-3">
+                      {template.demoUrl && (
+                        <Link
+                          href={template.demoUrl}
+                          target="_blank"
+                          className="flex-1 btn btn-outline text-sm"
+                        >
+                          Live Demo
+                        </Link>
+                      )}
+                      <Link
+                        href="/contact"
+                        className="flex-1 btn btn-primary text-sm"
+                      >
+                        Get Started
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
 
           {/* No Results Message */}
-          {filteredTemplates.length === 0 && (
+          {!loading && filteredTemplates.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-xl text-neutral-600">
-                No templates found in this category.
+              <div className="text-6xl mb-4">🎨</div>
+              <h3 className="text-2xl font-bold mb-2">No Templates Yet</h3>
+              <p className="text-xl text-neutral-600 mb-6">
+                {selectedCategory === "All Templates"
+                  ? "Templates will appear here once you add them to Sanity Studio."
+                  : `No templates found in the ${selectedCategory} category.`}
               </p>
             </div>
           )}

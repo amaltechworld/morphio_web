@@ -100,6 +100,7 @@ export async function getAllTemplates() {
       category,
       price,
       features,
+      tags,
       demoUrl,
       popular
     }`
@@ -117,6 +118,7 @@ export async function getTemplatesByCategory(category: string) {
       category,
       price,
       features,
+      tags,
       demoUrl,
       popular
     }`,
@@ -135,6 +137,7 @@ export async function getTemplateBySlug(slug: string) {
       category,
       price,
       features,
+      tags,
       demoUrl,
       popular
     }`,

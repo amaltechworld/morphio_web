@@ -50,11 +50,12 @@ export default defineType({
       type: 'string',
       options: {
         list: [
-          { title: 'Business', value: 'business' },
-          { title: 'Restaurant', value: 'restaurant' },
-          { title: 'Portfolio', value: 'portfolio' },
-          { title: 'E-commerce', value: 'ecommerce' },
-          { title: 'Landing Page', value: 'landing' },
+          { title: 'Restaurant', value: 'Restaurant' },
+          { title: 'Salon & Spa', value: 'Salon & Spa' },
+          { title: 'E-commerce', value: 'E-commerce' },
+          { title: 'Professional Services', value: 'Professional Services' },
+          { title: 'Portfolio', value: 'Portfolio' },
+          { title: 'Landing Page', value: 'Landing Page' },
         ],
       },
       validation: (Rule) => Rule.required(),
@@ -75,6 +76,13 @@ export default defineType({
       name: 'demoUrl',
       title: 'Demo URL',
       type: 'url',
+    }),
+    defineField({
+      name: 'tags',
+      title: 'Tags',
+      type: 'array',
+      of: [{ type: 'string' }],
+      description: 'Keywords for searching and filtering (e.g., modern, elegant, minimal)',
     }),
     defineField({
       name: 'popular',
