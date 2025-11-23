@@ -29,7 +29,9 @@ export default function PortfolioCard({ project }: PortfolioCardProps) {
       <div className="p-6 bg-white">
         <div className="flex items-center gap-2 mb-2">
           <span className="text-sm text-gray-600 capitalize">
-            {project.category.replace('-', ' ')}
+            {(project as any).category === 'Custom' && (project as any).customCategory
+              ? (project as any).customCategory
+              : (project as any).category}
           </span>
         </div>
         <h3 className="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">

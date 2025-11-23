@@ -10,6 +10,7 @@ export async function getAllPortfolioProjects() {
       description,
       mainImage,
       category,
+      customCategory,
       tags,
       clientName,
       completedDate,
@@ -28,6 +29,7 @@ export async function getFeaturedProjects() {
       description,
       mainImage,
       category,
+      customCategory,
       tags
     }`
   )
@@ -43,6 +45,7 @@ export async function getPortfolioProjectBySlug(slug: string) {
       mainImage,
       gallery,
       category,
+      customCategory,
       tags,
       clientName,
       projectUrl,
@@ -64,6 +67,7 @@ export async function getAllTemplates() {
       description,
       preview,
       category,
+      customCategory,
       price,
       features,
       tags,
@@ -82,6 +86,7 @@ export async function getTemplatesByCategory(category: string) {
       description,
       preview,
       category,
+      customCategory,
       price,
       features,
       tags,
@@ -101,6 +106,7 @@ export async function getTemplateBySlug(slug: string) {
       description,
       preview,
       category,
+      customCategory,
       price,
       features,
       tags,

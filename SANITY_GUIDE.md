@@ -16,12 +16,33 @@
    - **Slug**: Auto-generated URL (click "Generate")
    - **Description**: Brief description of the project
    - **Main Image**: Click to upload project screenshot
-   - **Category**: Select from dropdown (e.g., "Bakery & Cafe")
+   - **Category**: Select from dropdown (see Category Guide below)
+   - **Custom Category Name**: Only appears if you select "Other (Custom)"
    - **Client Name**: Client's business name
    - **Tags**: Add keywords (e.g., "bakery", "modern", "elegant")
    - **Featured**: Check this to show on homepage
    - **Completed Date**: Select project completion date
 4. Click **"Publish"** (bottom right)
+
+### Category Guide for Portfolio
+
+**Use Predefined Categories** (recommended to avoid typos):
+- Bakery & Cafe
+- Salon & Barbershop
+- Restaurant
+- Cafe & Restaurant
+- Retail Shop
+- Professional Services
+- Health & Wellness
+- Beauty & Spa
+- E-commerce
+- Portfolio
+
+**Use Custom Category** when you need a category not in the list:
+1. Select **"Other (Custom)"** from Category dropdown
+2. A new field **"Custom Category Name"** will appear
+3. Type your custom category (e.g., "Medical Clinic", "Real Estate")
+4. Make sure to spell it exactly the same for all projects in that category!
 
 ---
 
@@ -34,13 +55,32 @@
    - **Slug**: Auto-generated URL (click "Generate")
    - **Description**: Brief description of template
    - **Preview Image**: Upload template screenshot
-   - **Category**: Select from dropdown
+   - **Category**: Select from dropdown (see Category Guide below)
+   - **Custom Category Name**: Only appears if you select "Other (Custom)"
    - **Price**: Enter price (e.g., 100)
    - **Features**: Click "Add item" to add each feature
    - **Tags**: Add keywords (e.g., "modern", "elegant")
    - **Demo URL**: Optional link to live demo
    - **Popular Template**: Check to mark as popular
 4. Click **"Publish"**
+
+### Category Guide for Templates
+
+**Use Predefined Categories** (recommended to avoid typos):
+- Restaurant
+- Salon & Spa
+- E-commerce
+- Professional Services
+- Portfolio
+- Landing Page
+- Bakery & Cafe
+- Health & Wellness
+
+**Use Custom Category** when you need a category not in the list:
+1. Select **"Other (Custom)"** from Category dropdown
+2. A new field **"Custom Category Name"** will appear
+3. Type your custom category (e.g., "Hotel", "Education")
+4. Make sure to spell it exactly the same for all templates in that category!
 
 ---
 
@@ -100,7 +140,31 @@ Just upload your original high-quality images directly!
 - Add clear, descriptive **tags** for better organization
 - Upload high-quality images directly - no need to pre-compress
 - Use the **"Generate"** button for slugs (they must be unique)
-- **Category** field is now free text - type any category you want!
+- **Use predefined categories** to prevent typos that break filtering
+- **Custom categories** are automatically added to filter buttons on website
+
+---
+
+## Managing Categories
+
+### How to Change a Custom Category
+
+If you misspelled a custom category or want to rename it:
+
+1. Find all items with that category
+2. Edit each one individually
+3. Change **"Other (Custom)"** to a predefined category, OR
+4. Keep **"Other (Custom)"** and update the **Custom Category Name** field
+5. Click **"Publish"** on each item
+
+### How to Remove a Category from the Filter
+
+Categories appear on the website filter automatically based on your content:
+- Delete all items with that category, OR
+- Change them to a different category
+- The category will disappear from filters automatically
+
+**Note**: Predefined categories always appear in dropdown even if not used yet. Custom categories only appear if at least one item uses them.
 
 ---
 

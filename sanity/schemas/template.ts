@@ -48,8 +48,27 @@ export default defineType({
       name: 'category',
       title: 'Category',
       type: 'string',
-      description: 'Enter category (e.g., Restaurant, Salon & Spa, E-commerce, Portfolio)',
+      options: {
+        list: [
+          { title: 'Restaurant', value: 'Restaurant' },
+          { title: 'Salon & Spa', value: 'Salon & Spa' },
+          { title: 'E-commerce', value: 'E-commerce' },
+          { title: 'Professional Services', value: 'Professional Services' },
+          { title: 'Portfolio', value: 'Portfolio' },
+          { title: 'Landing Page', value: 'Landing Page' },
+          { title: 'Bakery & Cafe', value: 'Bakery & Cafe' },
+          { title: 'Health & Wellness', value: 'Health & Wellness' },
+          { title: 'Other (Custom)', value: 'Custom' },
+        ],
+      },
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'customCategory',
+      title: 'Custom Category Name',
+      type: 'string',
+      description: 'Only fill this if you selected "Other (Custom)" above',
+      hidden: ({ parent }) => parent?.category !== 'Custom',
     }),
     defineField({
       name: 'price',

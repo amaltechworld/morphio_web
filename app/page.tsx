@@ -221,7 +221,11 @@ export default async function Home() {
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                     <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                      <div className="text-sm opacity-90 mb-1">{project.category}</div>
+                      <div className="text-sm opacity-90 mb-1">
+                        {project.category === 'Custom' && project.customCategory
+                          ? project.customCategory
+                          : project.category}
+                      </div>
                       <h3 className="text-xl font-bold">{project.clientName || project.title}</h3>
                     </div>
                   </div>

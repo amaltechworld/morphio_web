@@ -5,17 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { urlFor } from '@/lib/sanity.client';
 
-// Categories for filtering
-const templateCategories = [
-  "All Templates",
-  "Restaurant",
-  "Salon & Spa",
-  "E-commerce",
-  "Professional Services",
-  "Portfolio",
-  "Landing Page",
-];
-
 export default function TemplatesPage() {
   const [templates, setTemplates] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -37,9 +26,26 @@ export default function TemplatesPage() {
     fetchTemplates();
   }, []);
 
+  // Get unique categories including custom ones
+  const uniqueCategories = Array.from(
+    new Set(
+      templates.map((template) =>
+        template.category === 'Custom' && template.customCategory
+          ? template.customCategory
+          : template.category
+      )
+    )
+  );
+  const dynamicCategories = ["All Templates", ...uniqueCategories];
+
   const filteredTemplates = selectedCategory === "All Templates"
     ? templates
-    : templates.filter((template) => template.category === selectedCategory);
+    : templates.filter((template) => {
+        const displayCategory = template.category === 'Custom' && template.customCategory
+          ? template.customCategory
+          : template.category;
+        return displayCategory === selectedCategory;
+      });
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -65,7 +71,7 @@ export default function TemplatesPage() {
       <section className="section bg-white">
         <div className="container-custom">
           <div className="flex flex-wrap gap-3 justify-center mb-12">
-            {templateCategories.map((category) => (
+            {dynamicCategories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
@@ -108,7 +114,9 @@ export default function TemplatesPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="absolute top-4 right-4">
                       <span className="px-3 py-1 bg-primary-500 text-white text-sm font-medium rounded-full">
-                        {template.category}
+                        {template.category === 'Custom' && template.customCategory
+                          ? template.customCategory
+                          : template.category}
                       </span>
                     </div>
                     {/* View Demo Button - appears on hover */}
