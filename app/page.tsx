@@ -1,9 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
-import { projects } from "@/data/projects";
+import { urlFor } from '@/lib/sanity.client';
+import { getAllPortfolioProjects } from '@/lib/sanity.queries';
 import { servicePackages } from "@/data/services";
 
-export default function Home() {
+// This makes the page dynamic and fetches fresh data on each request
+export const dynamic = 'force-dynamic';
+
+export default async function Home() {
+  const projects = await getAllPortfolioProjects();
   const featuredProjects = projects.slice(0, 3);
   const totalProjects = projects.length;
 
@@ -188,55 +193,59 @@ export default function Home() {
       </section>
 
       {/* Portfolio Preview */}
-      <section className="section bg-white">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="section-title">Recent Projects</h2>
-            <p className="section-subtitle mx-auto">
-              See what we've built for small businesses like yours.
-            </p>
-          </div>
+      {projects.length > 0 && (
+        <section className="section bg-white">
+          <div className="container-custom">
+            <div className="text-center mb-16">
+              <h2 className="section-title">Recent Projects</h2>
+              <p className="section-subtitle mx-auto">
+                See what we've built for small businesses like yours.
+              </p>
+            </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {featuredProjects.map((project) => (
-              <Link
-                key={project.id}
-                href={`/portfolio/${project.id}`}
-                className="group card p-0 overflow-hidden"
-              >
-                <div className="relative h-64 overflow-hidden">
-                  <Image
-                    src={project.imageUrl}
-                    alt={project.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <div className="text-sm opacity-90 mb-1">{project.industry}</div>
-                    <h3 className="text-xl font-bold">{project.clientName}</h3>
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
+              {featuredProjects.map((project: any) => (
+                <Link
+                  key={project._id}
+                  href={`/portfolio/${project.slug.current}`}
+                  className="group card p-0 overflow-hidden"
+                >
+                  <div className="relative h-64 overflow-hidden">
+                    {project.mainImage?.asset && (
+                      <Image
+                        src={urlFor(project.mainImage).width(800).height(600).url()}
+                        alt={project.title}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                      <div className="text-sm opacity-90 mb-1">{project.category}</div>
+                      <h3 className="text-xl font-bold">{project.clientName || project.title}</h3>
+                    </div>
                   </div>
-                </div>
-                <div className="p-6">
-                  <p className="text-neutral-600 mb-4 line-clamp-2">{project.description}</p>
-                  <div className="flex items-center text-primary-600 font-medium">
-                    View Case Study
-                    <svg className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
+                  <div className="p-6">
+                    <p className="text-neutral-600 mb-4 line-clamp-2">{project.description}</p>
+                    <div className="flex items-center text-primary-600 font-medium">
+                      View Case Study
+                      <svg className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
                   </div>
-                </div>
+                </Link>
+              ))}
+            </div>
+
+            <div className="text-center">
+              <Link href="/portfolio" className="btn btn-primary">
+                View All Projects
               </Link>
-            ))}
+            </div>
           </div>
-
-          <div className="text-center">
-            <Link href="/portfolio" className="btn btn-primary">
-              View All Projects
-            </Link>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Everything Under One Umbrella */}
       <section className="section bg-gradient-to-br from-primary-500 to-secondary-600 text-white">
@@ -400,43 +409,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="section bg-neutral-50">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="section-title">What Our Clients Say</h2>
-            <p className="section-subtitle mx-auto">
-              Don't just take our word for it. Here's what small business owners say about working with us.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {projects.slice(0, 3).map((project) => project.testimonial && (
-              <div key={project.id} className="card bg-white">
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-5 h-5 text-accent-400" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-neutral-700 mb-6 italic">"{project.testimonial.quote}"</p>
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center">
-                    <span className="text-primary-600 font-bold text-lg">
-                      {project.testimonial.author.charAt(0)}
-                    </span>
-                  </div>
-                  <div>
-                    <div className="font-semibold">{project.testimonial.author}</div>
-                    <div className="text-sm text-neutral-600">{project.testimonial.role}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Testimonials - Hidden until projects are added to Sanity with testimonial content */}
 
       {/* FAQ */}
       <section className="section bg-white">

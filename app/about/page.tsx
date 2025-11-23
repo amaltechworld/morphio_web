@@ -1,13 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
-import { projects } from "@/data/projects";
+import { getAllPortfolioProjects } from '@/lib/sanity.queries';
 
 export const metadata = {
   title: "About Us | Morphio Web",
   description: "Learn about our mission to empower small businesses with modern, affordable web development.",
 };
 
-export default function AboutPage() {
+// This makes the page dynamic and fetches fresh data on each request
+export const dynamic = 'force-dynamic';
+
+export default async function AboutPage() {
+  const projects = await getAllPortfolioProjects();
   const totalProjects = projects.length;
   const teamMembers = [
     {
