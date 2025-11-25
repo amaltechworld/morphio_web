@@ -12,17 +12,33 @@
 1. Click **"Portfolio"** in the left sidebar
 2. Click **"Create"** button (top right)
 3. Fill in the fields:
-   - **Title**: Project name (e.g., "Bella's Bakery")
-   - **Slug**: Auto-generated URL (click "Generate")
-   - **Description**: Brief description of the project
+   - **Title**: Project name (e.g., "Bella's Bakery Website")
+   - **Slug**: Auto-generated URL - Click "Generate" button
+     - Converts title to URL format (e.g., "bellas-bakery-website")
+     - Creates clean URLs like: yoursite.com/portfolio/bellas-bakery-website
+     - Must be unique for each project
+   - **Description**: Brief description of the project (max 200 characters)
    - **Main Image**: Click to upload project screenshot
    - **Category**: Select from dropdown (see Category Guide below)
    - **Custom Category Name**: Only appears if you select "Other (Custom)"
-   - **Client Name**: Client's business name
+   - **Client Name**: Client's business name (optional)
+   - **Project URL**: Link to live website (e.g., https://bellasbakery.com)
+     - ⚠️ Only add if you have client permission!
    - **Tags**: Add keywords (e.g., "bakery", "modern", "elegant")
    - **Featured**: Check this to show on homepage
    - **Completed Date**: Select project completion date
 4. Click **"Publish"** (bottom right)
+
+### ⚠️ Important: Client Permission
+
+**Before adding client work to portfolio:**
+1. Always ask client for written permission
+2. Most clients say YES (free marketing for them!)
+3. If client says NO:
+   - Remove business name and use generic title ("Local Bakery")
+   - Don't add Project URL
+   - Blur logo/business name in screenshots
+4. Consider creating demo projects (fake businesses) for your portfolio
 
 ### Category Guide for Portfolio
 
@@ -51,18 +67,36 @@
 1. Click **"Website Templates"** in the left sidebar
 2. Click **"Create"** button
 3. Fill in the fields:
-   - **Template Name**: Name (e.g., "Modern Restaurant")
-   - **Slug**: Auto-generated URL (click "Generate")
+   - **Template Name**: Name (e.g., "Modern Restaurant Template")
+   - **Slug**: Auto-generated URL - Click "Generate" button
+     - Converts name to URL format (e.g., "modern-restaurant-template")
+     - Creates URLs like: yoursite.com/templates/modern-restaurant-template
    - **Description**: Brief description of template
    - **Preview Image**: Upload template screenshot
    - **Category**: Select from dropdown (see Category Guide below)
    - **Custom Category Name**: Only appears if you select "Other (Custom)"
    - **Price**: Enter price (e.g., 100)
    - **Features**: Click "Add item" to add each feature
-   - **Tags**: Add keywords (e.g., "modern", "elegant")
-   - **Demo URL**: Optional link to live demo
+     - Example: "5-10 custom pages"
+     - Example: "Mobile-responsive design"
+   - **Tags**: Add keywords (e.g., "modern", "elegant", "restaurant")
+   - **Demo URL**: Link to live demo (e.g., https://demo.yoursite.com/restaurant)
+     - Shows "View Live Demo" button on template card
+     - Host demos on Vercel/Netlify (free)
    - **Popular Template**: Check to mark as popular
 4. Click **"Publish"**
+
+### 💡 How to Host Template Demos
+
+**Option 1: Vercel (Recommended, Free)**
+1. Deploy each template as separate Vercel project
+2. Get URL: https://restaurant-template.vercel.app
+3. Paste URL in Demo URL field
+
+**Option 2: Subdomain**
+1. Create subdomain: demo.morphioweb.com
+2. Deploy templates to /restaurant, /salon, etc.
+3. URL: https://demo.morphioweb.com/restaurant
 
 ### Category Guide for Templates
 
