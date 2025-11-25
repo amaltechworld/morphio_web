@@ -27,6 +27,9 @@
    - **Tags**: Add keywords (e.g., "bakery", "modern", "elegant")
    - **Featured**: Check this to show on homepage
    - **Completed Date**: Select project completion date
+     - ⭐ Projects are sorted by this date (newest first!)
+     - Most recent project appears at the top of portfolio
+   - **Display Order**: Optional - leave empty (not used for sorting)
 4. Click **"Publish"** (bottom right)
 
 ### ⚠️ Important: Client Permission
@@ -176,6 +179,44 @@ Just upload your original high-quality images directly!
 - Use the **"Generate"** button for slugs (they must be unique)
 - **Use predefined categories** to prevent typos that break filtering
 - **Custom categories** are automatically added to filter buttons on website
+
+---
+
+## How Projects & Templates Are Displayed
+
+### Portfolio Projects Sorting
+
+**Automatic Sorting (Newest First):**
+- Projects are sorted by **Completed Date** (most recent first)
+- If no completion date, sorts by creation date
+- **Example Order:**
+  1. Project completed Nov 25, 2025 ← Shows first
+  2. Project completed Nov 20, 2025
+  3. Project completed Nov 15, 2025
+  4. Project completed Nov 10, 2025 ← Shows last
+
+**No manual ordering needed!** Just set the completion date correctly.
+
+### Featured Projects on Homepage
+
+- Shows projects with "Featured Project" checkbox checked
+- Also sorted by completion date (newest first)
+- Displays up to 3 projects on homepage
+
+### Template Sorting
+
+**Current Order:**
+1. **Popular templates first** (if "Popular Template" is checked)
+2. **Then alphabetically by name** (A to Z)
+
+**Example:**
+```
+✓ Modern Restaurant (Popular) ← Shows first
+✓ Spa & Wellness (Popular)
+  Bakery Template (A)
+  E-commerce Template (E)
+  Professional Services (P)
+```
 
 ---
 

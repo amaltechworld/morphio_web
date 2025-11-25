@@ -3,7 +3,7 @@ import { client } from './sanity.client'
 // Portfolio queries
 export async function getAllPortfolioProjects() {
   return client.fetch(
-    `*[_type == "portfolio"] | order(order asc, _createdAt desc) {
+    `*[_type == "portfolio"] | order(completedDate desc, _createdAt desc) {
       _id,
       title,
       slug,
@@ -22,7 +22,7 @@ export async function getAllPortfolioProjects() {
 
 export async function getFeaturedProjects() {
   return client.fetch(
-    `*[_type == "portfolio" && featured == true] | order(order asc) [0...6] {
+    `*[_type == "portfolio" && featured == true] | order(completedDate desc, _createdAt desc) [0...6] {
       _id,
       title,
       slug,
